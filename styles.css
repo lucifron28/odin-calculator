@@ -25,10 +25,15 @@
 }
 
 .calculator-display {
+    display: flex;
     background-color: ghostwhite;
     border: 2px solid gray;
     height: 80px;
     width: 300px;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: x-large;
 }
 
 .button-grid {
@@ -37,4 +42,8 @@
     grid-template-rows: repeat(5, 1fr);
     width: 300px;
     height: 400px;
+}
+
+.button-grid button {
+    background-color: cornsilk;
 }
