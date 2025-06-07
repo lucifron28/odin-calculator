@@ -4,15 +4,22 @@ document.addEventListener("DOMContentLoaded", () => {
       '7', '8', '9', '×',
       '4', '5', '6', '−',
       '1', '2', '3', '+',
-      '0', '.', '='
+      ',', '0', '='
    ];
 
 
    const root = document.getElementById("root");
+
    function createCalculatorContainer() {
       const calculatorDiv = document.createElement("div");
       calculatorDiv.classList.add("calculator-container");
       return calculatorDiv;
+   }
+
+   function createDisplayBar() {
+      const display = document.createElement('div');
+      display.classList.add("calculator-display");
+      return display;
    }
 
    function createButton(buttonText) {
@@ -33,7 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
    }
 
    const calculator = createCalculatorContainer();
+   const display = createDisplayBar();
    const buttonGrid = createButtonGrid(buttonLayout);
+   calculator.appendChild(display);
    calculator.appendChild(buttonGrid);
    root.appendChild(calculator);
 });
