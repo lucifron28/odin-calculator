@@ -16,4 +16,17 @@ document.addEventListener("DOMContentLoaded", () => {
       newButton.textContent = buttonText;
       return newButton;
    }
+
+   function createButtonGrid(buttons) {
+      const buttonGrid = document.createElement("div");
+      buttonGrid.classList = "button-grid";
+      root.appendChild(buttonGrid);
+
+      buttons.forEach((btn) => {
+         const newBtn = document.createElement("button");
+         newBtn.classList.add("calculator-button");
+         newBtn.textContent = btn;
+         buttonGrid.appendChild(newBtn);
+      })
+   }
 });
