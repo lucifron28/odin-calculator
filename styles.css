@@ -46,4 +46,5 @@
 
 .button-grid button {
     background-color: cornsilk;
+    border-radius: 15px;
 }
