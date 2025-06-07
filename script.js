@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
      const buttonLayout = [
-      'C', '±', '%', '÷',
+      'C', 'DEL', '%', '÷',
       '7', '8', '9', '×',
       '4', '5', '6', '−',
       '1', '2', '3', '+',
-      ',', '0', '='
+      '.', '0', '='
    ];
    const root = document.getElementById("root");
    let equation = "0";
@@ -51,11 +51,44 @@ document.addEventListener("DOMContentLoaded", () => {
    root.appendChild(calculator);
 
    function buttonPressed(btn) {
-      if (equation == 0) {
-         equation = btn;
-      } else {
-         equation += btn;
+      switch (btn) {
+         case "C":
+            equation = "0";
+            break;
+         case "=":
+            try {
+               equation = eval(
+                  equation.replace(/x/g, "*")
+                     .replace(/÷/g, "/")
+               );
+            } catch {
+               equation = "Error";
+            }
+            break;
+         case "DEL":
+            if (equation == "Error") {
+               equation = "0";
+               break;
+            }
+            if (equation.length > 1) {
+               equation = equation.substring(0, equation.length - 1);
+            } else {
+               equation = "0";
+            }
+            break;
+         default:
+            if (equation == "Error") {
+               equation = "0";
+               break;
+            }
+            if (equation == "0") {
+               equation = btn;
+            } else {
+               equation += btn;
+            }
+            break;
       }
+
       displayEquation.textContent = equation;
    }
 });
